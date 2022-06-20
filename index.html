@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accident Alert System | Decentralized | Smart Contract based Project</title>
+    <link rel="stylesheet" href="modules/site/main/assets/styles/odometer-theme-digital.css">
+    <link rel="stylesheet" href="modules/site/main/assets/styles/styles23b7.css?1599046343">
+    <link rel="icon" href="modules/site/main/assets/images/favicon.png" type="image/png" />
+    <meta name="sc.balance" content="" />
+	<script>
+		function alphaOnly(event) {
+  var key = event.keyCode;
+  return ((key >= 65 && key <= 90) || key == 8 || key == 9);
+};
+		
+	</script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+	<style>
+		table, th, td {
+		  border: 0px solid #FFF;
+		  border-collapse: collapse;
+		  line-height: 2;
+		  font-weight: 500;
+		}
+		td {
+			color: #fff;
+		}
+		.style-0 {
+		  background-color: transparent;
+		}
+
+		.style-1 {
+		  background-color: #3CB371;
+		}
+		
+	
+a:link, a:visited {
+  background-color: transparent;
+  color: #0000EE;
+  padding: 0px 2px;
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: transparent;
+}
+
+		/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+		
+		form.errors {
+  :invalid {
+    outline: 2px solid red;
+  }
+}
+	</style>
+	<link rel="stylesheet" href="style.css">
+<script>
+
+
+	
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+	//var embedLink  = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDUROz7BPJt_FrMYvc6YgrSLZY_NlyU5Sg&q=" + 														position.coords.latitude + "," + position.coords.longitude;
+
+	//var srcLink = "https://maps.google.com/maps?q=" + position.coords.latitude + "," + position.coords.longitude;
+	var srcLinkValue = position.coords.latitude + "," + position.coords.longitude;
+
+	document.getElementById("txtLocation").value = srcLinkValue;
+  	//document.getElementById("iframe1").src=embedLink;
+	//document.getElementById("alink").href = srcLinkValue;
+	//return false;
+}
+
+
+function ValidateAge(el) 
+{
+	  var result;
+	   var res = Number(e1.value);
+	  if (res >= 1 || res <=120 )
+	  {
+	    result= 0;
+	  } else if (el.value.length == 0)
+	  {
+	     result = 0;
+	  } else {
+		result= -1;
+	  }
+	if( result == -1)
+	{
+		alert("Invalid Age");
+		var onblurevent = el.onblur;
+		el.onblur = "";
+		setTimeout(function() {
+			el.focus();
+			el.onblur = onblurevent;
+		},0);
+	} 
+	return false;
+}
+	
+function ValidateDate(el) 
+{
+	  var result;
+	  if (/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/.test(el.value))
+	  {
+	    result= 0;
+	  } else if (el.value.length == 0)
+	  {
+	     result = 0;
+	  } else {
+		result= -1;
+	  }
+	if( result == -1)
+	{
+		alert("Invalid Date");
+		var onblurevent = el.onblur;
+		el.onblur = "";
+		setTimeout(function() {
+			el.focus();
+			el.onblur = onblurevent;
+		},0);
+	} 
+	return false;
+}
+
+function ValidatePincode(el) 
+{
+	
+	  var result;
+	  if (/^[1-9][0-9]{5}$/gi.test(el.value))
+	  {
+	    result= 0;
+	  } else if (el.value.length == 0)
+	  {
+	     result = 0;
+	  } else {
+		result= -1;
+	  }
+	if( result == -1)
+	{
+		alert("Invalid Pincode");
+		var onblurevent = el.onblur;
+		el.onblur = "";
+		setTimeout(function() {
+			el.focus();
+			el.onblur = onblurevent;
+		},0);
+	} 
+	return false;
+}
+	
+function ValidateMobile(el) 
+{
+	  var result;
+	  if (/^[6-9]\d{9}$/gi.test(el.value))
+	  {
+	    result= 0;
+	  } else if (el.value.length == 0)
+	  {
+	     result = 0;
+	  } else {
+		result= -1;
+	  }
+	if( result == -1)
+	{
+		alert("Invalid Mobile Number");
+		var onblurevent = el.onblur;
+		el.onblur = "";
+		setTimeout(function() {
+			el.focus();
+			el.onblur = onblurevent;
+		},0);
+	} 
+	return false;
+}
+	
+function ValidateEmail(el) 
+{
+	  var result;
+	  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(el.value))
+	  {
+	    result= 0;
+	  } else if (el.value.length == 0)
+	  {
+	     result = 0;
+	  } else {
+		result= -1;
+	  }
+	if( result == -1)
+	{
+		alert("Invalid Email Address");
+		var onblurevent = el.onblur;
+		el.onblur = "";
+		setTimeout(function() {
+			el.focus();
+			el.onblur = onblurevent;
+		},0);
+	} 
+	return false;
+}
+	
+//document.getElementById("txtMobile1").addEventListener("blur", function () { alert('Hi');  });
+</script>	
+</head>
+
+<body bgcolor="#000">
+<section  class="fxt-template-animation fxt-template-layout27">
+    <main  id="App" v-cloak>
+	    <center>
+         <div class="header">
+            <div class="header__wrap">
+                <div class="header__item" v-if="tron.account">
+                    <div class="header__label">Your Tron wallet</div>
+                    <div class="header__value"><span v-text="tron.account"></span>
+                    </div>
+                </div>
+                <div class="header__grow"></div>
+            </div>
+        </div>
+	    </center>
+        <section >
+		<!--
+            <img class="top-logo" src="modules/site/main/assets/images/top.png?2" width="125" style=" padding-top: 0px; padding-bottom: 0px;" /><br>
+			<img class="top-logo" src="modules/site/main/assets/images/logoc81e-green.png?2" width="300" style=" padding-top: 0px; padding-bottom: 0px;" />
+-->		<br/><br/><br/>
+		<h2 class="join" style=" text-align:center; color: #FFF">Accident Alert System</h2>
+			<br/><br/>
+			<!-- <img class="top-heading-mobile" width="50%" style=" margin-bottom: 50px;" src="modules/site/main/assets/images/logo-mobile.png" /> -->
+            <div class="container" v-show="tab == 'main'">
+                <div class="counter-wrapper">
+                    <div class="odometer" ref="odometer">{{ contract.total_users }}</div>
+                </div>
+		    
+		<center>
+			<div>
+			<button class="button" @click="signup()" v-if="user.id == 0">
+				<div class="button-content" style=" color: #fff; background-color: #0aba77; font-weight: 500">Signup</div>
+			</button>					
+			</div>
+		</center>
+
+                 <div class="menu">
+                    <div>
+                        <button class="button" @click.prevent="tab = 'how'">
+                            <div class="button-content" style=" color: #0aba77; border: 1px solid #000;">How it Works</div>
+                        </button>
+                    </div>	
+                    <div>
+                        <button class="button" @click.prevent="tab = 'usage'">
+                            <div class="button-content" style=" color: #0aba77; border: 1px solid #000;">What's Usage</div>
+                        </button>
+                    </div>
+                    <div>
+                        <button class="button" @click.prevent="tab = 'security'">
+                            <div class="button-content" style=" color: #0aba77; border: 1px solid #000;">Security Works</div>
+                        </button>
+                    </div>			 
+                </div>
+            </div>
+        </section>
+        <section class="section calc bg-hidden" v-show="tab == 'main'">
+			<div class="container">
+				
+			<div class="panel-info" style="border: 0px solid #000; background-color: #222; margin: 0;">
+			<div>
+				
+			<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Basic Profile Info  </span> </div> 
+			<hr style=" line-height:1; " color="#0aba77" /><br/>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Your Address</span><a v-if="tron.account" :href="'https://shasta.tronscan.org/#/address/' + tron.account" target="_blank" style=" color: #0aba77;">{{ tron.account.substr(0, 8) }}...</a><span v-if="!tron.account" class="ether-value">---</span></div>
+				
+			<div class="panel-info-item" style=" line-height:1;" ><span>Your Amount</span> <span>{{ user.total_amount }} </span></div>
+				
+				
+			<div class="panel-info-item" style=" line-height:1;" ><span>Id</span><span> {{ user.vehicle_no }}/{{ user.id }} </span> </div>
+                        <div class="panel-info-item" style=" line-height:1;" ><span>Name</span><span>{{ user.username }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Date of Birth</span><span>{{ user.dob }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Age</span><span>{{ user.age }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>Gender</span><span>{{ user.gender }} </span> </div>
+				
+			<div class="panel-info-item" style=" line-height:1;" ><span>Blood Group</span><span>{{ user.blood_group }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Email</span><span>{{ user.email }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>Mobile No.</span><span>{{ user.mobile_no }} </span> </div>
+				
+			<div class="panel-info-item" style=" line-height:1;" ><span>Vehicle No.</span><span>{{ user.vehicle_no }} </span> </div>	
+			<!--
+				<div class="panel-info-item" style=" line-height:1;" ><span>RC Book</span><span>{{ user.rc_book }} </span> </div>
+			-->
+			<button class="button" @click="updateprofile()" v-if="user.id > 0">
+				<div class="button-content" style=" color: #000; background-color: #0aba77; font-weight: 500">Update</div>
+			</button>	
+
+			<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Address Info  </span> </div> <hr style=" line-height:1; " color="#0aba77" /><br/>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Address 1</span><span>{{ user.address1 }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Address 2</span><span>{{ user.address2 }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>City</span><span>{{ user.city }} </span> </div>			
+			<div class="panel-info-item" style=" line-height:1;" ><span>Pincode</span><span>{{ user.pincode }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>State</span><span>{{ user.state }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>Country</span><span>{{ user.country }} </span> </div>	
+				
+			<button class="button" @click="updateaddress()" v-if="user.id > 0">
+				<div class="button-content" style=" color: #000; background-color: #0aba77; font-weight: 500">Update</div>
+			</button>	
+
+			<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Contact Info  </span> </div> <hr style=" line-height:1; " color="#0aba77" /><br/>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Contact Person Name</span><span>{{ user.cp_name }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>Contact Person Relation</span><span>{{ user.cp_relation }} </span> </div>
+			<div class="panel-info-item" style=" line-height:1;" ><span>Contact Person Email</span><span>{{ user.cp_email }} </span> </div>	
+			<div class="panel-info-item" style=" line-height:1;" ><span>Contact Person Mobile No.</span><span>{{ user.cp_mobile_no }} </span> </div>				
+
+			<button class="button" @click="updatecontact()" v-if="user.id > 0">
+				<div class="button-content" style=" color: #000; background-color: #0aba77; font-weight: 500">Update</div>
+			</button>					
+				
+			</div>
+			</div>
+			<br/>
+				
+
+			
+				
+			</div>
+        </section>
+        <section class="section" v-show="tab == 'main'">
+            <div class="container">
+		    
+			<center>
+			<div>
+			<button class="button" @click="report()" v-if="user.id > 0">
+				<div class="button-content" style=" color: #000; background-color: #0aba77; font-weight: 500">Report</div>
+			</button>										
+			</div>
+			</center>
+		    
+			<div class="panel-info" style="border: 0px solid #000; background-color: #222; margin: 0;">
+				<div>
+					<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Accidents Reported  </span> </div> <hr style=" line-height:1;" color="#0aba77" /><br/>
+					<div class="panel-info-item"><span>No. of Reports</span><span class="ether-value">{{ safe( parseInt(user.total_reports).toLocaleString()) }} </span> </div>
+					<table width="100%" >
+					<tr style=" background-color: #3CB371"> 
+						<th width="14%" align="center" style="text-transform: capitalize;"> Id </th>
+						<th width="17%" align="center" style="text-transform: capitalize;"> Reported <br/> Date</th>
+						<th width="17%" align="center" style="text-transform: capitalize;"> Points <br/>  </th>
+						<th width="17%" align="center" style="text-transform: capitalize;"> Justification <br/>  </th>
+						<th width="17%" align="center" style="text-transform: capitalize;"> Location </th> 
+						<th width="18%" align="center" style="text-transform: capitalize;"> Vehicle <br/>  </th> 
+					</tr>
+					<tr v-for="(report,index) in user.report_info" :key="index" :class="'style-' + (index % 2)">
+						<td  align="center" height="18"> <span> {{report[0]}}</span> </td>
+						<td  align="center" height="18"> <span> {{report[1]}}</span> </td>
+						<td  align="center" height="18"> <span> {{report[2]}}</span> </td>
+						<td  align="center" height="18"> <span> {{report[3]}}</span> </td>
+						<td  align="center" height="18">  <span> <a v-bind:href="'https://maps.google.com/maps?q=' + report[4]" > https://maps.google.com/maps?q={{report[4]}} </a> </span>   </td>
+						<td  align="center" height="18"> <span> {{report[5]}}</span> </td>
+					</tr>
+					</table>
+
+				</div>	
+			</div>
+			<br/>
+				
+				
+            </div>
+		
+			<br/>
+                <div class="panel-info" style="border: 0px solid #000; background-color: #222; margin: 0;">
+                    <div>
+						<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Smart Contract Info  </span> </div> <hr style=" line-height:1;" color="#0aba77" /><br/>
+                        <div class="panel-info-item"><span>Smart Contract address</span><a :href="'https://nile.tronscan.org/#/contract/' + contract_address" target="_blank" style=" color: #0aba77;">{{ contract_address.substr(0, 8) }}...</a>
+                        </div>
+                        <div class="panel-info-item"><span>Total Community participants</span><span class="ether-value" v-text="safe(contract.total_users)">?</span>
+                        </div>						
+
+                    </div>
+                </div>
+        </section> 
+				
+        <section class="section" v-show="tab == 'how'">
+            <div class="page">
+                <h3>Heading</h3>
+                <p></p>
+                <p></p>
+
+                <br><a href="index.html" @click.prevent="tab = 'main'">Back</a>
+            </div>
+        </section>
+        <section class="section" v-show="tab == 'usage'">
+            <div class="page">
+                <h3>Heading</h3>
+                <p></p>
+                <p></p>
+                
+                <br/><a href="index.html" @click.prevent="tab = 'main'">Back</a>
+            </div>
+        </section>
+	    
+    	<section class="section" v-show="tab == 'security'">
+            <div class="page">
+                <h3>Heading</h3>
+                <p></p>
+                <p></p>
+                
+                <br/><a href="index.html" @click.prevent="tab = 'main'">Back</a>
+            </div>
+        </section>
+	 
+	<div class="i-modal" v-if="upmodal.show" > 
+		<form>
+            <div class="i-modal__wrap">
+                <div class="i-modal__close" @click="upmodal.show = false"></div>
+                <div class="i-modal__body">
+                    <div class="i-modal__title" style=" text-transform: capitalize;" >Signup Details</div>
+			<hr/>
+                    	<div class="i-modal__text" style=" text-transform: capitalize;" >
+						<span> Name </span> <br/> <input type="text" onkeydown="return alphaOnly(event);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" onblur v-model="upmodal.username">
+						<br/>
+						<span> Vehicle Number </span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="upmodal.vehicleno">
+						<br/>				
+						<span> Mobile Number </span> <br/> <input type="number" onblur="ValidateMobile(this);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal.mobileno" >
+						<br/>				
+						<span> Contact Person </span> <br/> <input type="text" onkeydown="return alphaOnly(event);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal.cpname" >
+						<br/>				
+						<span> Contact Person Mobile </span> <br/> <input type="number" onblur="ValidateMobile(this);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal.cpmobileno" >
+						<br/>
+				
+                        </div>
+                        <br/>
+                        <button type="button"  style=" height:24px;"  @click="signup(upmodal.username, upmodal.vehicleno, upmodal.mobileno, upmodal.cpname, upmodal.cpmobileno)">Sign Up</button>
+                        <br/>
+                        <br/>
+                        <p style="text-transform:none">Check your signup details!
+                            <br/>You can change it before proceeding with signup.</p>
+                    </div>
+                </div>
+            </div>
+		</form>
+        </div>	
+	    
+	
+
+	<div class="i-modal" v-if="upmodal1.show" > 
+            <div class="i-modal__wrap">
+                <div class="i-modal__close" @click="upmodal1.show = false"></div>
+                <div class="i-modal__body">
+                    <div class="i-modal__title" style=" text-transform: capitalize;" >Update Profile</div>
+			<hr/>
+                    	<div class="i-modal__text" style=" text-transform: capitalize;" >
+
+						<span> Name </span> <br/> <input type="text" onkeydown="return alphaOnly(event);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="upmodal1.username">
+						<br/>			
+						<span> Mobile Number </span> <br/> <input type="number"  onblur="ValidateMobile(this);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal1.mobileno" >
+						<br/>	
+						<span> Date of Birth</span> <br/> <input type="date"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="40" v-model="upmodal1.dob" >
+						<br/>								
+						<span> Age </span> <br/> <input type="number" onblur="ValidateAge(this);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="20" v-model="upmodal1.age">
+						<br/>	
+						<span> Gender </span> <br/> 
+							<select v-model="upmodal1.gender">
+							  <option>Male</option>
+							  <option>Female</option>
+							</select>
+							<!--<input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal1.gender" >-->
+						<br/>				
+						<span> Blood Group</span> <br/> 
+							<select v-model="upmodal1.blood_group">				
+								<option>A RhD positive (A+)</option>
+								<option>A RhD negative (A-)</option>
+								<option>B RhD positive (B+)</option>
+								<option>B RhD negative (B-)</option>
+								<option>O RhD positive (O+)</option>
+								<option>O RhD negative (O-)</option>
+								<option>AB RhD positive (AB+)</option>
+								<option>AB RhD negative (AB-)</option>
+							</select>
+							<!-- <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal1.blood_group" > -->
+						<br/>
+						<span> Email</span> <br/> <input type="text" onblur="ValidateEmail(this);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal1.email" >
+						<br/>
+				
+                        </div>
+                        <br/>
+                        <button  style=" height:24px;" @click="updateprofile(upmodal1.username, upmodal1.mobileno, upmodal1.dob, upmodal1.age, upmodal1.gender, upmodal1.blood_group, upmodal1.email)">Update</button>
+                        <br/>
+                        <br/>
+                        <p style="text-transform:none">Check your  details.
+                            <br/>You can change it before proceeding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>	
+	
+	
+	<div class="i-modal" v-if="upmodal2.show" > 
+            <div class="i-modal__wrap">
+                <div class="i-modal__close" @click="upmodal2.show = false"></div>
+                <div class="i-modal__body">
+                    <div class="i-modal__title" style=" text-transform: capitalize;" >Update Address</div>
+			<hr/>
+                    	<div class="i-modal__text" style=" text-transform: capitalize;" >
+
+						<span> Address1 </span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="75" v-model="upmodal2.address1">
+						<br/>			
+						<span> Address2 </span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="75" v-model="upmodal2.address2" >
+						<br/>	
+						<span> City </span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="upmodal2.city">
+						<br/>	
+						<span> Pincode </span> <br/> <input type="number"  onblur="return ValidatePincode(this);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal2.pincode" >
+						<br/>				
+						<span> State </span> <br/> <input type="text" onkeydown="return alphaOnly(event);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal2.state" >
+						<br/>
+						<span> Country </span> <br/> <input type="text" onkeydown="return alphaOnly(event);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal2.country" >
+						<br/>
+				
+                        </div>
+                        <br/>
+                        <button  style=" height:24px;" @click="updateaddress(upmodal2.address1, upmodal2.address2, upmodal2.city, upmodal2.pincode, upmodal2.state, upmodal2.country)">Update</button>
+                        <br/>
+                        <br/>
+                        <p style="text-transform:none">Check your  details.
+                            <br/>You can change it before proceeding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>	
+	
+	
+	<div class="i-modal" v-if="upmodal3.show" > 
+            <div class="i-modal__wrap">
+                <div class="i-modal__close" @click="upmodal3.show = false"></div>
+                <div class="i-modal__body">
+                    <div class="i-modal__title" style=" text-transform: capitalize;" >Update Contact</div>
+			<hr/>
+                    	<div class="i-modal__text" style=" text-transform: capitalize;" >
+
+						<span> Contact Person Name </span> <br/> <input type="text" onkeydown="return alphaOnly(event);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="upmodal3.cp_name">
+						<br/>			
+						<span> Contact Relation </span> <br/> <input type="text" onkeydown="return alphaOnly(event);"  style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="50" v-model="upmodal3.cp_relation" >
+						<br/>	
+						
+						<span> Contact Email </span> <br/> <input type="text" onblur="ValidateEmail(this);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="60" v-model="upmodal3.cp_email">
+						<br/>	
+						<span> Contact Personal Mobile </span> <br/> <input type="number"  onblur="ValidateMobile(this);" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal3.cp_mobileno" >
+						<br/>				
+
+				
+                        </div>
+                        <br/>
+                        <button  style=" height:24px;" @click="updatecontact(upmodal3.cp_name, upmodal3.cp_relation, upmodal3.cp_email, upmodal3.cp_mobileno)">Update</button>
+                        <br/>
+                        <br/>
+                        <p style="text-transform:none">Check your  details.
+                            <br/>You can change it before proceeding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>	
+
+	<div class="i-modal" v-if="upmodal4.show" > 
+            <div class="i-modal__wrap">
+                <div class="i-modal__close" @click="upmodal4.show = false"></div>
+                <div class="i-modal__body">
+                    <div class="i-modal__title" style=" text-transform: capitalize;" >Report Accident</div>
+			<hr/>
+                    	<div class="i-modal__text" style=" text-transform: capitalize;" >
+
+				<span> Justification</span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="100" v-model="upmodal4.justification">
+				<br/>			
+				<span> Location </span> <br/> 
+				<input type="text" id="txtLocation" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="70"  >
+				<input type="button" onClick="getLocation();" value="Get Current Location" /> 
+				<br/>	
+
+				<span> Accident Date </span> <br/> <input type="date" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="40" v-model="upmodal4.accident_date">
+				<br/>	
+				<span> Vehicle Number </span> <br/> <input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:15%;" size="30" v-model="upmodal4.vehicle_no" >
+				<br/>				
+
+				
+                        </div>
+                        <br/>
+                        <button  style=" height:24px;" @click="report(upmodal4.justification, $('#txtLocation').val(), upmodal4.accident_date, upmodal4.vehicle_no)">Update</button>
+                        <br/>
+                        <br/>
+                        <p style="text-transform:none">Check your  details.
+                            <br/>You can change it before proceeding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>	
+	
+    </main>
+</section>
+    <footer>
+	    <!--
+        <div class="footer-content"><a href="#" target="_blank" class="btn" style=" color: #000; background-color: #0aba77">Official channel</a>
+	 </div>	
+	-->
+    </footer>
+
+    <script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="modules/site/main/assets/scripts/odometer.min.js"></script>
+    <script src="modules/site/main/assets/scripts/common7620.js?1602063002"></script>
+    <script type="text/javascript">
+        (function(m, e, t, r, i, k, a) {
+            m[i] = m[i] || function() {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(66417985, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+	
+		     <!-- jquery for background animation-->
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/particles.min.js"></script>
+		<script src="js/particles-1.js"></script>
+		<script src="js/main.js"></script>	
+    <noscript>
+        <div>
+            <img src="https://mc.yandex.ru/watch/66417985" style="position:absolute; left:-9999px;" alt="" />
+        </div>
+    </noscript>
+</body>
+</html>
