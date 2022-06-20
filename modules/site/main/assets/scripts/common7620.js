@@ -95,6 +95,7 @@
                 total_reports: 0,
             },
 	   searchresult: {
+		vehicleno: '',
 		username: '',
 		age: 0,
 		blood_group: '',
