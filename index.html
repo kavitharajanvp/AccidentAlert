@@ -389,11 +389,8 @@ function ValidateEmail(el)
 				<div>
 					<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77">  Search by Vehicle  </span> </div> <hr style=" line-height:1;" color="#0aba77" /><br/>
 					<div class="panel-info-item">
-						<input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="searchresult.vehicleno">
-						<button class="button" @click="search(searchresult.vehicleno)" v-if="user.id > 0">
-							<div class="button-content" style=" color: #fff; background-color: green; font-weight: 200; height: 75px;">Search</div>
-						</button>	
- 						<!-- <button type="button" class="btn"  style=" height:24px;"  @click="search(searchresult.vehicleno)">Search</button> -->
+						<input type="text" style="color:#000; padding:5px 10px; font:14px; border:1px solid #ccc; max-width:100%;" size="50" v-model="searchresult.vehicleno">	
+ 						<button type="button" style=" color: #fff; background-color: green; height:35px;"  @click="search(searchresult.vehicleno)">Search</button>
 					</div>
 
 					<div class="panel-info-item" style=" line-height:0;"><span style=" color: #0aba77"> Search Result </span> </div> 
