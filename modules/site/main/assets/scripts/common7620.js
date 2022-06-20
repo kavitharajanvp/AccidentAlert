@@ -273,8 +273,14 @@
 			var dd = String(dt.getDate()).padStart(2, '0');
 			var mm = String(dt.getMonth() + 1).padStart(2, '0'); //January is 0!
 			var yyyy = dt.getFullYear();
-					
 
+			this.searchresult.vehicleno = '';
+		   	this.searchresult.username = '';
+			this.searchresult.age = 0;
+		   	this.searchresult.blood_group = '';
+		   	this.searchresult.cpname = '';
+		   	this.searchresult.cpemail = '';
+		   	this.searchresult.cpmobileno = '';
 					
 			var rd	= String(dt.getDate()).padStart(2, '0') + '/' + 
 					String(dt.getMonth() + 1).padStart(2, '0') + '/' + 
