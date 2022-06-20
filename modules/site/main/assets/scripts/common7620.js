@@ -94,6 +94,14 @@
                 total_users: 0,
                 total_reports: 0,
             },
+	   searchresult: {
+		username: '',
+		age: 0,
+		blood_group: '',
+		cpname: '',
+		cpemail: '',
+		cpmobileno: ''
+            },	       
 	   upmodal: {
                 show: false,
 		username: '',
@@ -355,7 +363,23 @@
 					});
 				});
 			} else return this.upmodal.show = true;
-            },			
+            },	
+	search(vehicle_no) {
+                if(!this.tron.account) return this.notice('To process you need to use the Tron wallet.', 'fb8c00');
+		if(vehicle_no)
+		{
+			this.getTronWeb().then(tronWeb => {
+				contract.vehicleInfo(vehicle_no).call().then(res => {
+					this.searchresult.age = parseInt(res.age);
+					this.searchresult.username = tronWeb.toUtf8(res.user_details[0]).replace(/[^\x20-\x7E]/g, '');
+					this.searchresult.blood_group = tronWeb.toUtf8(res.user_details[1]).replace(/[^\x20-\x7E]/g, '');
+					this.searchresult.cpname = tronWeb.toUtf8(res.user_details[2]).replace(/[^\x20-\x7E]/g, '');
+					this.searchresult.cpemail  = tronWeb.toUtf8(res.user_details[3]).replace(/[^\x20-\x7E]/g, '');
+					this.searchresult.cpmobileno  = tronWeb.toUtf8(res.user_details[4]).replace(/[^\x20-\x7E]/g, '');
+				    });
+			});
+		};
+            },		
             updateprofile(username,mobile_no,dob,age,gender,blood_group,email) {
                 if(!this.tron.account) return this.notice('To process you need to use the Tron wallet.', 'fb8c00');
                 if(this.user.balance < 0.1) return this.notice('To process you need to have TRX in your wallet.<br/>If you just received funds to your wallet, wait 1 minute for network confirmation and try again', 'fb8c00');
